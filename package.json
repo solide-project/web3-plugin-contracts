@@ -1,32 +1,26 @@
 {
-  "name": "web3-plugin-template",
+  "name": "web3-plugin-contracts",
   "version": "1.0.0",
-  "description": "Template plugin to extend web3.js with additional methods",
+  "description": "Web3js plugin for interacting with smart contracts",
   "main": "lib/index.js",
   "types": "lib/index.d.ts",
-  "homepage": "https://github.com/web3/web3.js-plugin-template#readme",
-  "bugs": {
-    "url": "https://github.com/web3/web3.js-plugin-template/issues"
-  },
+  "homepage": "https://github.com/solide-project/web3-plugin-contracts#readme",
   "scripts": {
     "lint": "eslint '{src,test}/**/*.ts'",
     "build": "tsc --project tsconfig.build.json",
+    "play": "npx ts-node src/play.ts",
     "test": "jest --config=./test/jest.config.js"
   },
-  "contributors": [
-    "ChainSafe <info@chainsafe.io>"
-  ],
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "git@github.com:web3/web3.js-plugin-template.git"
-  },
-  "dependencies": {
+    "url": "git@github.com:solide/web3-plugin-contracts.git"
   },
   "devDependencies": {
     "@chainsafe/eslint-config": "^2.0.0",
     "@types/jest": "^29.5.2",
     "@types/node": "^20.2.6",
+    "dotenv": "^16.4.5",
     "eslint": "8",
     "jest": "^29.5.0",
     "jest-extended": "^4.0.0",
@@ -36,6 +30,7 @@
     "web3": "^4.2.2"
   },
   "peerDependencies": {
-    "web3": ">= 4.0.3"
+    "web3": ">= 4.0.3",
+    "web3-validator": ">= 2.0.4"
   }
 }
