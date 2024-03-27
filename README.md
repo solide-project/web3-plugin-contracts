@@ -1,22 +1,23 @@
 # web3-plugin-contracts
 
-`web3-plugin-contracts` is a typescript library and a web3.js plugin for loading and obtaining source contract and interaction with web's `Contract` with just a contract address.
+`web3-plugin-contracts` is a TypeScript library and a Web3.js plugin designed to simplify the process of loading and accessing source contracts and interacting with smart contracts. With this plugin, developers can seamlessly interact with Web3's `Contracts` class using only a contract address.
 
-Read the [Proposal](# web3-plugin-contracts) for more information
+Read the [Proposal](https://github.com/solide-project/web3-plugin-contracts/blob/master/README.md) for more information.
 
 ## Features
 
-- Support over 100+ chains
-	- To see all support chains [Chains]()
-	- To request for a chains, submit a ticket
-- Get smart contract source code and metadata for a given verified smart contract. This includes (not exhaustive)
-	- source code
-	- abi
-	- bytecode
-	- compiler version
-	- contract name
-	- compiler setting
-- Load a `Contract` instance without the need for supplying ABI, according to the official web3.js documentation ([https://docs.web3js.org/](https://docs.web3js.org/)).
+- Access support for over 100+ chains effortlessly.
+	- Explore all supported chains [here](https://github.com/solide-project/web3-plugin-contracts/blob/master/src/chains/chain-id.ts).
+	- Need support for a specific chain? Submit a ticket.
+- Obtain smart contract source code and metadata for any verified smart contract. This includes, but is not limited to:
+	- Source code
+	- ABI
+	- Bytecode
+	- Compiler version
+	- Contract name
+	- Compiler settings
+- Load a `Contract` instance seamlessly, following the guidelines of the official Web3.js documentation ([https://docs.web3js.org/](https://docs.web3js.org/)). See Usage for example
+
 
 ## Installation
 
@@ -28,7 +29,7 @@ npm i web3-plugin-contracts
 
 ## Usage
 
-The package is best used with `web3.js`. Basically, you can just extend the plugin as part of web3 instance
+The package is optimally utilized alongside `web3.js`. Simply extend the plugin as part of your web3 instance for seamless integration.
 
 ```ts
 import Web3, { Contract } from "web3";
@@ -59,7 +60,7 @@ const name: string = await contract.methods.name().call()
 console.log(name)
 ```
 
-You could also load both the source and contract without a Web3 instance, however you would need to set a *provider* to the contract in order to interact and invoke contract methods.
+Additionally, you have the flexibility to load both the source and contract without a Web3 instance. However, to interact with and invoke contract methods, it's essential to set a *provider* to the contract.
 
 ```ts
 import { getSource, getContract } from "web3-plugin-contract";
