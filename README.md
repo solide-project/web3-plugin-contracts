@@ -1,8 +1,10 @@
 # web3-plugin-contracts
 
+<img src="https://badge.fury.io/js/web3-plugin-contracts.svg" alt="npm version" height="18"></a>
+
 `web3-plugin-contracts` is a TypeScript library and a Web3.js plugin designed to simplify the process of loading and accessing source contracts and interacting with smart contracts. With this plugin, developers can seamlessly interact with Web3's `Contracts` class using only a contract address.
 
-Read the [Proposal](https://github.com/solide-project/web3-plugin-contracts/blob/master/README.md) for more information.
+Read the [Proposal](https://github.com/solide-project/web3-plugin-contracts/blob/master/contractsPlugin.md) for more information.
 
 ## Features
 
