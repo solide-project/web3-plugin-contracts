@@ -1,6 +1,6 @@
 {
   "name": "web3-plugin-contracts",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Web3js plugin for interacting with smart contracts",
   "main": "lib/index.js",
   "types": "lib/index.d.ts",
@@ -14,7 +14,7 @@
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "git@github.com:solide/web3-plugin-contracts.git"
+    "url": "git@github.com:solide-project/web3-plugin-contracts.git"
   },
   "devDependencies": {
     "@chainsafe/eslint-config": "^2.0.0",
