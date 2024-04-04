@@ -179,6 +179,14 @@ const getIcon = (chainId: string): string => {
       return "shardeum.svg"
     case ChainID.VELAS_MAINNET:
       return "velas.svg"
+    case ChainID.MODE_MAINNET:
+    case ChainID.MODE_SEPOLIA:
+      return "mode.svg"
+    case ChainID.MORPH_TESTNET:
+      return "morph.svg"
+    case ChainID.BLAST_MAINNET:
+    case ChainID.BLAST_SEPOLIA:
+      return "blast.svg"
     default:
       return ""
   }

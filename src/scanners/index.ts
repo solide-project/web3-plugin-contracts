@@ -61,6 +61,10 @@ export const getScanner = (chainId: string, apiKey: string = ""): ExplorerInterf
         case ChainID.ROOTSTOCK_TESTNET:
         case ChainID.LIGHTLINK_PHOENIX_MAINNET:
         case ChainID.LIGHTLINK_PEGASUS_TESTNET:
+        case ChainID.ETHERLINK_TESTNET:
+        case ChainID.MODE_MAINNET:
+        case ChainID.MODE_SEPOLIA:
+        case ChainID.MORPH_TESTNET:
             return new BlockScoutClient(chainId, apiKey)
         case ChainID.XDC_MAINNET:
             return new BlocksScanClient(chainId, apiKey)

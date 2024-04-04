@@ -116,6 +116,11 @@ const data: { [key: string]: string } = {
   [ChainID.ETHERLINK_TESTNET]: "https://testnet-explorer.etherlink.com",
   [ChainID.SHARDEUM_SPHINX_1_X]: "https://explorer-sphinx.shardeum.org",
   [ChainID.VELAS_MAINNET]: "https://evmexplorer.velas.com",
+  [ChainID.MODE_MAINNET]: "https://explorer.mode.network",
+  [ChainID.MODE_SEPOLIA]: "https://sepolia.explorer.mode.network",
+  [ChainID.MORPH_TESTNET]: "https://explorer-testnet.morphl2.io",
+  [ChainID.BLAST_MAINNET]: "https://api.blastscan.io",
+  [ChainID.BLAST_SEPOLIA]: "https://api-sepolia.blastscan.io",
 }
 
 export const getExplorer = (network: string): string => data[network] || ""

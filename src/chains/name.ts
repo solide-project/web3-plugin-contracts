@@ -114,6 +114,11 @@ const data: { [key: string]: string } = {
   [ChainID.ETHERLINK_TESTNET]: "Etherlink Testnet",
   [ChainID.SHARDEUM_SPHINX_1_X]: "Shardeum Sphinx 1.x",
   [ChainID.VELAS_MAINNET]: "Velas Mainnet",
+  [ChainID.MODE_MAINNET]: "Mode Mainnet",
+  [ChainID.MODE_SEPOLIA]: "Mode Seoplia",
+  [ChainID.MORPH_TESTNET]: "Morph Testnet",
+  [ChainID.BLAST_MAINNET]: "Blast Mainnet",
+  [ChainID.BLAST_SEPOLIA]: "Blast Seoplia",
 }
 
 export const getNetworkNameFromChainID = (network: string): string =>

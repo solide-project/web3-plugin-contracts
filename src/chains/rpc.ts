@@ -110,7 +110,12 @@ const data: { [key: string]: string } = {
     [ChainID.LIGHTLINK_PEGASUS_TESTNET]: "https://replicator.pegasus.lightlink.io/rpc/v1",
     [ChainID.ETHERLINK_TESTNET]: "https://node.ghostnet.etherlink.com",
     [ChainID.SHARDEUM_SPHINX_1_X]: "https://sphinx.shardeum.org",
-    [ChainID.VELAS_MAINNET]: "https://evmexplorer.velas.com/rpc"
+    [ChainID.VELAS_MAINNET]: "https://evmexplorer.velas.com/rpc",
+    [ChainID.MODE_MAINNET]: "https://mainnet.mode.network",
+    [ChainID.MODE_SEPOLIA]: "https://sepolia.mode.network",
+    [ChainID.MORPH_TESTNET]: "https://rpc-testnet.morphl2.io",
+    [ChainID.BLAST_MAINNET]: "https://rpc.blast.io",
+    [ChainID.BLAST_SEPOLIA]: "https://sepolia.blast.io",
 }
 
 export const getRPC = (network: string): string =>

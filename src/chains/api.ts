@@ -124,6 +124,11 @@ const data: { [key: string]: string } = {
   [ChainID.LIGHTLINK_PEGASUS_TESTNET]: "https://pegasus.lightlink.io",
   [ChainID.ETHERLINK_TESTNET]: "https://testnet-explorer.etherlink.com",
   [ChainID.VELAS_MAINNET]: "https://evmexplorer.velas.com",
+  [ChainID.MODE_MAINNET]: "https://explorer.mode.network",
+  [ChainID.MODE_SEPOLIA]: "https://sepolia.explorer.mode.network",
+  [ChainID.MORPH_TESTNET]: "https://explorer-testnet.morphl2.io",
+  [ChainID.BLAST_MAINNET]: "https://blastscan.io",
+  [ChainID.BLAST_SEPOLIA]: "https://sepolia.blastscan.io",
 }
 
 export const getAPI = (network: string): string => data[network] || ""
