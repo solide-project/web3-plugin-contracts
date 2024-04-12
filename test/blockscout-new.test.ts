@@ -72,4 +72,67 @@ describe("Blockscout (New) Tests", () => {
             }).rejects.toThrow();
         });
     });
+
+    describe(`${getNetworkNameFromChainID(ChainID.SHIMMER_MAINNET)} Test`, () => {
+        let params: {
+            chainId: string
+            rpc: string,
+            apiKey?: string
+            verifiedContract: string
+            proxyContract: string
+            unverifiedContract: string
+        }
+        beforeAll(() => {
+            const chain = ChainID.SHIMMER_MAINNET;
+            params = {
+                chainId: chain,
+                rpc: getRPC(chain),
+                apiKey: getAPIKey(chain),
+                verifiedContract: "0xb9F296bC947d55D7eDD0627C428891B7331Ef2c2",   
+                proxyContract: "0x699eB64887eaC65D775d95288de5a0eE25c44259",
+                unverifiedContract: "0x0000000000000000000000000000000000000000"
+            }
+        });
+
+        it("should create a contract instance for verified smart contract", async () => {
+            // Arrange
+            const web3Context = new core.Web3Context(params.rpc);
+            const expectedInit: boolean = true;
+
+            // Act
+            web3Context.registerPlugin(new ContractPlugin());
+            const contract = await web3Context.contractPlugin.contract(params.verifiedContract);
+            const actualInit: boolean = await contract.methods.initialized().call();
+
+            // Assert
+            expect(contract).not.toBeNull();
+            expect(actualInit).toEqual(expectedInit);
+        }, 30 * SECONDS);
+
+        it("should create the implementation contract instance for a proxy contract", async () => {
+            // Arrange
+            const web3Context = new core.Web3Context(params.rpc);
+            const expectedAccessControlManager: string = "0xf32c0fb28dbc1171e4E01168A02275242df34483";
+
+            // Act
+            web3Context.registerPlugin(new ContractPlugin());
+            const contract = await web3Context.contractPlugin.contract(params.proxyContract); // Pass an empty object as the second argument
+            const actualAccessControlManager: string = await contract.methods.accessControlManager().call();
+
+            // Assert
+            expect(contract).not.toBeNull();
+            expect(actualAccessControlManager).toEqual(expectedAccessControlManager);
+        }, 30 * SECONDS);
+
+        it("should throw an error for unverified smart contract", async () => {
+            // Arrange
+            const web3Context = new core.Web3Context(params.rpc);
+
+            // Act & Assert
+            await expect(async () => {
+                web3Context.registerPlugin(new ContractPlugin(params.apiKey));
+                await web3Context.contractPlugin.contract(params.unverifiedContract);
+            }).rejects.toThrow();
+        });
+    });
 });

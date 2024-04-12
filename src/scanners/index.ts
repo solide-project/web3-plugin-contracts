@@ -4,6 +4,7 @@ import { BlockScoutOldClient } from "./blockscout-old";
 import { BlocksScanClient } from "./blocksscan";
 import { ChainLensClient } from "./chain-lens";
 import { ConfluxScanClient } from "./confluxscan";
+import { CoreScanClient } from "./core-scan";
 import { EtherScanClient } from "./etherscan";
 import { ExplorerInterface } from "./explorer-service";
 import { FilScanClient } from "./filscan";
@@ -65,6 +66,14 @@ export const getScanner = (chainId: string, apiKey: string = ""): ExplorerInterf
         case ChainID.MODE_MAINNET:
         case ChainID.MODE_SEPOLIA:
         case ChainID.MORPH_TESTNET:
+        case ChainID.SYNDICATE_FRAME_MAINNET:
+        case ChainID.DOS_MAINNET:
+        case ChainID.DOS_TESTNET:
+        case ChainID.DEGEN_MAINNET:
+        case ChainID.TAIKO_KATLA_TESTNET:
+        case ChainID.SHIMMER_MAINNET:
+        case ChainID.SHIMMER_TESTNET:
+        case ChainID.XRP_SIDECHAIN:
             return new BlockScoutClient(chainId, apiKey)
         case ChainID.XDC_MAINNET:
             return new BlocksScanClient(chainId, apiKey)
@@ -78,6 +87,7 @@ export const getScanner = (chainId: string, apiKey: string = ""): ExplorerInterf
         case ChainID.FILECOIN_CALIBRATION:
             return new FilScanClient(chainId, apiKey)
         case ChainID.TRON_MAINNET:
+        case ChainID.TRON_NILE_TESTNET:
         case ChainID.TRON_SHASTA_TESTNET:
             return new TronScanClient(chainId, apiKey)
         case ChainID.VICTION_MAINNET:
@@ -88,6 +98,8 @@ export const getScanner = (chainId: string, apiKey: string = ""): ExplorerInterf
         case ChainID.METER_MAINNET:
         case ChainID.METER_TESTNET:
             return new ChainLensClient(chainId)
+        case ChainID.CORE_MAINNET:
+            return new CoreScanClient(chainId, apiKey)
         default:
             return new EtherScanClient(chainId, apiKey)
     }

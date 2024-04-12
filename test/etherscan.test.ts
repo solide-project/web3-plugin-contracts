@@ -229,4 +229,81 @@ describe("Etherscan Tests", () => {
       }).rejects.toThrow(/not verified/);
     });
   });
+
+  describe(`${getNetworkNameFromChainID(ChainID.FRAXSCAN_MAINNET)} Test`, () => {
+    let params: {
+      chainId: string
+      rpc: string,
+      apiKey?: string
+      verifiedContract: string
+      proxyContract: string
+      unverifiedContract: string
+    }
+    beforeAll(() => {
+      const chain = ChainID.FRAXSCAN_MAINNET;
+      params = {
+        chainId: chain,
+        rpc: getRPC(chain),
+        apiKey: getAPIKey(chain),
+        verifiedContract: "0xfc00000000000000000000000000000000000006",
+        proxyContract: "0x4200000000000000000000000000000000000010",
+        unverifiedContract: "0x0000000000000000000000000000000000001010"
+      }
+    });
+
+    it("should create a contract instance for verified smart contract", async () => {
+      // Arrange
+      const web3Context = new core.Web3Context(params.rpc);
+      const expectedName: string = "Wrapped Frax Ether";
+
+      // Act
+      web3Context.registerPlugin(new ContractPlugin(params.apiKey));
+      const contract = await web3Context.contractPlugin.contract(params.verifiedContract);
+      const actualName: string = await contract.methods.name().call();
+
+      // Assert
+      expect(contract).not.toBeNull();
+      expect(expectedName).toEqual(actualName);
+    });
+
+    it("should create the implementation contract instance for a proxy contract", async () => {
+      // Arrange
+      const web3Context = new core.Web3Context(params.rpc);
+      const expectedL1TokenBridge: string = "0x34C0bD5877A5Ee7099D0f5688D65F4bB9158BDE2";
+
+      // Act
+      web3Context.registerPlugin(new ContractPlugin(params.apiKey));
+      const contract = await web3Context.contractPlugin.contract(params.proxyContract);
+      const actualL1TokenBridge: string = await contract.methods.l1TokenBridge().call();
+
+      // Assert
+      expect(contract).not.toBeNull();
+      expect(expectedL1TokenBridge).toEqual(actualL1TokenBridge);
+    });
+
+    it("should throw an error for unverified smart contract", async () => {
+      // Arrange
+      const web3Context = new core.Web3Context(params.rpc);
+
+      // Act & Assert
+      await expect(async () => {
+        web3Context.registerPlugin(new ContractPlugin(params.apiKey));
+        await web3Context.contractPlugin.contract(params.unverifiedContract);
+      }).rejects.toThrow(/not verified/);
+    });
+
+    /**
+     * Proxy contract will trigger two API calls, which will exceed the free tier limit hence throw an error
+     */
+    it("should throw an error for missing APIKey", async () => {
+      // Arrange
+      const web3Context = new core.Web3Context(params.rpc);
+
+      // Act & Assert
+      await expect(async () => {
+        web3Context.registerPlugin(new ContractPlugin());
+        await web3Context.contractPlugin.contract(params.proxyContract);
+      }).rejects.toThrow();
+    });
+  });
 });
