@@ -2,6 +2,7 @@ import { ChainID } from "../chains";
 import { BlockScoutClient } from "./blockscout-new";
 import { BlockScoutOldClient } from "./blockscout-old";
 import { BlocksScanClient } from "./blocksscan";
+import { BTRScanClient } from "./btrscan";
 import { ChainLensClient } from "./chain-lens";
 import { ConfluxScanClient } from "./confluxscan";
 import { CoreScanClient } from "./core-scan";
@@ -74,6 +75,10 @@ export const getScanner = (chainId: string, apiKey: string = ""): ExplorerInterf
         case ChainID.SHIMMER_MAINNET:
         case ChainID.SHIMMER_TESTNET:
         case ChainID.XRP_SIDECHAIN:
+        case ChainID.ETHEREUM_CLASSIC_MAINNET:
+        case ChainID.ETHEREUM_CLASSIC_TESTNET:
+        case ChainID.STABILITY_MAINNET:
+        case ChainID.STABILITY_TESTNET:
             return new BlockScoutClient(chainId, apiKey)
         case ChainID.XDC_MAINNET:
             return new BlocksScanClient(chainId, apiKey)
@@ -100,6 +105,9 @@ export const getScanner = (chainId: string, apiKey: string = ""): ExplorerInterf
             return new ChainLensClient(chainId)
         case ChainID.CORE_MAINNET:
             return new CoreScanClient(chainId, apiKey)
+        case ChainID.BITLAYER_MAINNET:
+        case ChainID.BITLAYER_TESTNET:
+            return new BTRScanClient(chainId, apiKey)
         default:
             return new EtherScanClient(chainId, apiKey)
     }
