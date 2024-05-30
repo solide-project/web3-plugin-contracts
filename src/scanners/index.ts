@@ -6,6 +6,7 @@ import { BTRScanClient } from "./btrscan";
 import { ChainLensClient } from "./chain-lens";
 import { ConfluxScanClient } from "./confluxscan";
 import { CoreScanClient } from "./core-scan";
+import { EthernalClient } from "./ethernal";
 import { EtherScanClient } from "./etherscan";
 import { ExplorerInterface } from "./explorer-service";
 import { FilScanClient } from "./filscan";
@@ -108,6 +109,8 @@ export const getScanner = (chainId: string, apiKey: string = ""): ExplorerInterf
         case ChainID.BITLAYER_MAINNET:
         case ChainID.BITLAYER_TESTNET:
             return new BTRScanClient(chainId, apiKey)
+        case ChainID.COTI_DEVNET:
+            return new EthernalClient(chainId, apiKey)
         default:
             return new EtherScanClient(chainId, apiKey)
     }
