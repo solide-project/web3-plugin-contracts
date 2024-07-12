@@ -80,6 +80,11 @@ export const getScanner = (chainId: string, apiKey: string = ""): ExplorerInterf
         case ChainID.ETHEREUM_CLASSIC_TESTNET:
         case ChainID.STABILITY_MAINNET:
         case ChainID.STABILITY_TESTNET:
+        case ChainID.LISK_MAINNET:
+        case ChainID.LISK_SEPOLIA:
+        case ChainID.REDSTONE_MAINNET:
+        case ChainID.REDSTONE_GARNET_TESTNET:
+        case ChainID.OPEN_CAMPUS_CODEX:
             return new BlockScoutClient(chainId, apiKey)
         case ChainID.XDC_MAINNET:
             return new BlocksScanClient(chainId, apiKey)
