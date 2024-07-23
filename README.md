@@ -37,7 +37,7 @@ The package is optimally utilized alongside `web3.js`. Simply extend the plugin 
 
 ```ts
 import Web3, { Contract } from "web3";
-import { ContractPlugin } from 'web3-plugin-contract';
+import { ContractPlugin } from 'web3-plugin-contracts';
 
 // Given a RPC, create web3 instance
 const rpc: string = 'https://eth.drpc.org/';
@@ -67,7 +67,7 @@ console.log(name)
 Additionally, you have the flexibility to load both the source and contract without a Web3 instance. However, to interact with and invoke contract methods, it's essential to set a *provider* to the contract.
 
 ```ts
-import { getSource, getContract } from "web3-plugin-contract";
+import { getSource, getContract } from "web3-plugin-contracts";
 
 // Verified smart contract
 const contractAddress = "0x75cb093E4D61d2A2e65D8e0BBb01DE8d89b53481";
