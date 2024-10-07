@@ -146,6 +146,7 @@ const data: { [key: string]: string } = {
   [ChainID.POLYGON_AMOY]: "https://amoy.polygonscan.com",
   [ChainID.GNOSIS_CHIADO]: "https://gnosis-chiado.blockscout.com",
   [ChainID.COTI_DEVNET]: "https://explorer-devnet.coti.io",
+  [ChainID.COTI_TESTNET]: "https://testnet.cotiscan.io",
   [ChainID.LISK_MAINNET]: "https://blockscout.lisk.com",
   [ChainID.LISK_SEPOLIA]: "https://sepolia-blockscout.lisk.com",
   [ChainID.REDSTONE_MAINNET]: "https://explorer.redstone.xyz",
@@ -178,4 +179,26 @@ export const getContractExplorer = (network: string, contract: string): string =
   }
 
   return `${explorer}/${addressPath}`
+}
+
+export const getTransactionExplorer = (network: string, tx: string): string => {
+  const explorer = getExplorer(network)
+  if (!explorer) {
+    return ""
+  }
+
+  let path = ""
+
+  switch (network) {
+    case ChainID.TRON_MAINNET:
+    case ChainID.TRON_SHASTA_TESTNET:
+    // @ts-expect-error
+    case ChainID.COTI_DEVNET:
+      path = `transaction/${tx}`
+    default:
+      path = `tx/${tx}`
+      break
+  }
+
+  return `${explorer}/${path}`
 }

@@ -144,6 +144,7 @@ const data: { [key: string]: string } = {
   [ChainID.POLYGON_AMOY]: "Polygon Amoy",
   [ChainID.GNOSIS_CHIADO]: "Gnosis Chiado",
   [ChainID.COTI_DEVNET]: "Coti Devnet",
+  [ChainID.COTI_TESTNET]: "Coti Testnet",
   [ChainID.LISK_MAINNET]: "Lisk Mainnet",
   [ChainID.LISK_SEPOLIA]: "Lisk Seoplia",
   [ChainID.REDSTONE_MAINNET]: "Redstone Mainnet",

@@ -15,7 +15,6 @@ export class BaseScan {
     this.apiKey = apiKey || ""
   }
 
-  //#region getSoureCode implementation
   getSourceCodeEndpoint(address: string): string {
     return `api?module=contract&action=getsourcecode&address=${address}`
   }
@@ -64,9 +63,6 @@ export class BaseScan {
 
     return data
   }
-  //#endregion
-
-  //#region utils
 
   /**
    * Append a given extension to string if it doesn't already have it.
@@ -110,9 +106,6 @@ export class BaseScan {
       SwarmSource: "",
     }
   }
-  //#endregion
-
-  //#region metadata implementation
 
   async metadataGetSources(metadata: any): Promise<any> {
     let sources: Record<string, { content: string }> = {}
@@ -164,5 +157,4 @@ export class BaseScan {
 
     return sources
   }
-  //#endregion
 }

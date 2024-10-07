@@ -141,6 +141,7 @@ const data: { [key: string]: string } = {
     [ChainID.POLYGON_AMOY]: "https://rpc-amoy.polygon.technology",
     [ChainID.GNOSIS_CHIADO]: "https://gnosis-chiado-rpc.publicnode.com/",
     [ChainID.COTI_DEVNET]: "https://devnet.coti.io/rpc",
+    [ChainID.COTI_TESTNET]: "https://testnet.coti.io/rpc",
     [ChainID.LISK_MAINNET]: "https://rpc.api.lisk.com",
     [ChainID.LISK_SEPOLIA]: "https://rpc.sepolia-api.lisk.com",
     [ChainID.REDSTONE_MAINNET]: "https://rpc.redstonechain.com",
