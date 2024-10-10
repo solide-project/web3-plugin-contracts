@@ -150,6 +150,8 @@ const data: { [key: string]: string } = {
   [ChainID.REDSTONE_MAINNET]: "Redstone Mainnet",
   [ChainID.REDSTONE_GARNET_TESTNET]: "Redstone Garnet Testnet",
   [ChainID.OPEN_CAMPUS_CODEX]: "Open Campus Codex",
+  [ChainID.UNICHAIN_SEPOLIA]: "Unichain Sepolia",
+  [ChainID.MOVEMENT_IMOLA]: "Movement Imola",
 }
 
 export const getNetworkNameFromChainID = (network: string): string =>

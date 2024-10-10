@@ -160,7 +160,8 @@ const data: { [key: string]: string } = {
   [ChainID.REDSTONE_MAINNET]: "https://explorer.redstone.xyz",
   [ChainID.REDSTONE_GARNET_TESTNET]: "https://explorer.garnetchain.com",
   [ChainID.OPEN_CAMPUS_CODEX]: "https://opencampus-codex.blockscout.com",
-
+  [ChainID.UNICHAIN_SEPOLIA]: "https://unichain-sepolia.blockscout.com",
+  [ChainID.MOVEMENT_IMOLA]: "",
 }
 
 export const getAPI = (network: string): string => data[network] || ""

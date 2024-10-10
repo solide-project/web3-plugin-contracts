@@ -147,6 +147,8 @@ const data: { [key: string]: string } = {
     [ChainID.REDSTONE_MAINNET]: "https://rpc.redstonechain.com",
     [ChainID.REDSTONE_GARNET_TESTNET]: "wss://rpc.garnetchain.com",
     [ChainID.OPEN_CAMPUS_CODEX]: "https://rpc.open-campus-codex.gelato.digital",
+    [ChainID.UNICHAIN_SEPOLIA]: "https://sepolia.unichain.org",
+    [ChainID.MOVEMENT_IMOLA]: "	https://mevm.devnet.imola.movementnetwork.xyz",
 }
 
 export const getRPC = (network: string): string =>

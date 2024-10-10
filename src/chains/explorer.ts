@@ -152,6 +152,8 @@ const data: { [key: string]: string } = {
   [ChainID.REDSTONE_MAINNET]: "https://explorer.redstone.xyz",
   [ChainID.REDSTONE_GARNET_TESTNET]: "https://explorer.garnetchain.com",
   [ChainID.OPEN_CAMPUS_CODEX]: "https://opencampus-codex.blockscout.com",
+  [ChainID.UNICHAIN_SEPOLIA]: "https://sepolia.uniscan.xyz",
+  [ChainID.MOVEMENT_IMOLA]: "https://explorer.devnet.imola.movementnetwork.xyz",
 }
 
 export const getExplorer = (network: string): string => data[network] || ""
@@ -172,6 +174,9 @@ export const getContractExplorer = (network: string, contract: string): string =
       break
     case ChainID.SHARDEUM_SPHINX_1_X:
       addressPath = `account/${contract}`
+      break
+    case ChainID.MOVEMENT_IMOLA:
+      addressPath = `#/txn/${contract}`
       break
     default:
       addressPath = `address/${contract}`
