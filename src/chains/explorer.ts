@@ -165,8 +165,9 @@ export const getContractExplorer = (network: string, contract: string): string =
   switch (network) {
     case ChainID.TRON_MAINNET:
     case ChainID.TRON_SHASTA_TESTNET:
-    // @ts-expect-error
     case ChainID.COTI_DEVNET:
+    // @ts-expect-error
+    case ChainID.COTI_TESTNET:
       addressPath = `contract/${contract}`
     case ChainID.PALM_MAINNET:
     case ChainID.PALM_TESTNET:
@@ -197,8 +198,9 @@ export const getTransactionExplorer = (network: string, tx: string): string => {
   switch (network) {
     case ChainID.TRON_MAINNET:
     case ChainID.TRON_SHASTA_TESTNET:
-    // @ts-expect-error
     case ChainID.COTI_DEVNET:
+    // @ts-expect-error
+    case ChainID.COTI_TESTNET:
       path = `transaction/${tx}`
     default:
       path = `tx/${tx}`
