@@ -1,6 +1,6 @@
 import { ChainID } from "./chain-id"
 
-const data: { [key: string]: string } = {
+export const data: { [key: string]: string } = {
     [ChainID.ETHEREUM_MAINNET]: "https://eth.drpc.org",
     [ChainID.ETHEREUM_GOERLI]: "wss://goerli.gateway.tenderly.co",
     [ChainID.ETHEREUM_SEPOLIA]: "https://ethereum-sepolia-rpc.publicnode.com",
@@ -157,7 +157,6 @@ const data: { [key: string]: string } = {
     [ChainID.SONEIUM_TESTNET]: "https://rpc.minato.soneium.org",
     [ChainID.BLACKFORT_MAINNET]: "https://mainnet.blackfort.network/rpc",
     [ChainID.BLACKFORT_TESTNET]: "https://testnet.blackfort.network/rpc",
+    [ChainID.APECHAIN_MAINNET]: "https://curtis.rpc.caldera.xyz/http",
+    [ChainID.APECHAIN_CURTIS_TESTNET]: "https://curtis.rpc.caldera.xyz/http"
 }
-
-export const getRPC = (network: string): string =>
-    data[network] || ""

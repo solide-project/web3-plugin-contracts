@@ -249,6 +249,9 @@ const getIcon = (chainId: string): string => {
     case ChainID.BLACKFORT_MAINNET:
     case ChainID.BLACKFORT_TESTNET:
       return "bxn.svg"
+    case ChainID.APECHAIN_MAINNET:
+    case ChainID.APECHAIN_CURTIS_TESTNET:
+      return "ape.svg"
     default:
       return ""
   }

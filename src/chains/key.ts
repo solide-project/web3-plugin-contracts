@@ -74,6 +74,9 @@ export const getAPIKey = (network: string): string => {
     case ChainID.XAI_GAMES_MAINNET:
     case ChainID.XAI_ARB_TESTNET:
       return process.env.XAISCAN_API_KEY || ""
+    case ChainID.APECHAIN_MAINNET:
+    case ChainID.APECHAIN_CURTIS_TESTNET:
+      return process.env.APESCAN_API_KEY || ""
     default:
       return ""
   }

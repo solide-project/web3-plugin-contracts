@@ -1,6 +1,6 @@
 import { ChainID } from "./chain-id"
 
-const data: { [key: string]: string } = {
+export const data: { [key: string]: string } = {
   [ChainID.ETHEREUM_MAINNET]: "Etheruem Mainnet",
   [ChainID.ETHEREUM_GOERLI]: "Etheruem Goerli",
   [ChainID.ETHEREUM_SEPOLIA]: "Etheruem Seoplia",
@@ -160,7 +160,6 @@ const data: { [key: string]: string } = {
   [ChainID.SONEIUM_TESTNET]: "Soneium Minato Testnet",
   [ChainID.BLACKFORT_MAINNET]: "BXN Mainnet",
   [ChainID.BLACKFORT_TESTNET]: "BXN Testnet",
+  [ChainID.APECHAIN_MAINNET]: "Ape Mainnet",
+  [ChainID.APECHAIN_CURTIS_TESTNET]: "Ape Curtis",
 }
-
-export const getNetworkNameFromChainID = (network: string): string =>
-  data[network] || ""

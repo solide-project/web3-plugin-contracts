@@ -1,6 +1,6 @@
 import { ChainID } from "./chain-id"
 
-const data: { [key: string]: string } = {
+export const data: { [key: string]: string } = {
   [ChainID.ETHEREUM_MAINNET]: "https://api.etherscan.io",
   [ChainID.ETHEREUM_GOERLI]: "https://api-goerli.etherscan.io",
   [ChainID.ETHEREUM_SEPOLIA]: "https://api-sepolia.etherscan.io",
@@ -170,6 +170,6 @@ const data: { [key: string]: string } = {
   [ChainID.SONEIUM_TESTNET]: "https://explorer-testnet.soneium.org",
   [ChainID.BLACKFORT_MAINNET]: "https://blackfort.blockscout.com",
   [ChainID.BLACKFORT_TESTNET]: "https://blackfort-testnet.blockscout.com",
+  [ChainID.APECHAIN_MAINNET]: "https://apechain.calderaexplorer.xyz",
+  [ChainID.APECHAIN_CURTIS_TESTNET]: "https://curtis.explorer.caldera.xyz",
 }
-
-export const getAPI = (network: string): string => data[network] || ""
