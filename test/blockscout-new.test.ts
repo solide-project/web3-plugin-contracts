@@ -198,4 +198,130 @@ describe("Blockscout (New) Tests", () => {
             }).rejects.toThrow();
         });
     });
+
+    describe(`${getNetworkNameFromChainID(ChainID.EDUCHAIN)} Test`, () => {
+        let params: {
+            chainId: string
+            rpc: string,
+            apiKey?: string
+            verifiedContract: string
+            proxyContract: string
+            unverifiedContract: string
+        }
+        beforeAll(() => {
+            const chain = ChainID.EDUCHAIN;
+            params = {
+                chainId: chain,
+                rpc: getRPC(chain),
+                apiKey: getAPIKey(chain),
+                verifiedContract: "0x435D669eFe1b328F4BA9c24BFBA91b053B34FdEe",
+                proxyContract: "0xD9C2Ff6DBD04A9Ed4d3EFdeD68Bd3766D16de26C",
+                unverifiedContract: "0x0000000000000000000000000000000000000000"
+            }
+        });
+
+        it("should create a contract instance for verified smart contract", async () => {
+            // Arrange
+            const web3Context = new core.Web3Context(params.rpc);
+            const expectedName: string = "Grasp";
+
+            // Act
+            web3Context.registerPlugin(new ContractPlugin());
+            const contract = await web3Context.contractPlugin.contract(params.verifiedContract);
+            const actualName: boolean = await contract.methods.name().call();
+
+            // Assert
+            expect(contract).not.toBeNull();
+            expect(actualName).toEqual(expectedName);
+        }, 30 * SECONDS);
+
+        it("should create the implementation contract instance for a proxy contract", async () => {
+            // Arrange
+            const web3Context = new core.Web3Context(params.rpc);
+            const expectedSigner: string = "0x278bD24A8B65D34bBF0a5b0D4b5510C2135d8f84";
+
+            // Act
+            web3Context.registerPlugin(new ContractPlugin());
+            const contract = await web3Context.contractPlugin.contract(params.proxyContract); // Pass an empty object as the second argument
+            const actualSigner: string = await contract.methods.signer().call();
+
+            // Assert
+            expect(contract).not.toBeNull();
+            expect(actualSigner).toEqual(expectedSigner);
+        }, 30 * SECONDS);
+
+        it("should throw an error for unverified smart contract", async () => {
+            // Arrange
+            const web3Context = new core.Web3Context(params.rpc);
+
+            // Act & Assert
+            await expect(async () => {
+                web3Context.registerPlugin(new ContractPlugin(params.apiKey));
+                await web3Context.contractPlugin.contract(params.unverifiedContract);
+            }).rejects.toThrow();
+        });
+    });
+
+    describe(`${getNetworkNameFromChainID(ChainID.SHAPE_MAINNET)} Test`, () => {
+        let params: {
+            chainId: string
+            rpc: string,
+            apiKey?: string
+            verifiedContract: string
+            proxyContract: string
+            unverifiedContract: string
+        }
+        beforeAll(() => {
+            const chain = ChainID.SHAPE_MAINNET;
+            params = {
+                chainId: chain,
+                rpc: getRPC(chain),
+                apiKey: getAPIKey(chain),
+                verifiedContract: "0x31eDFF898A00BCF4fE86B8b6A304b2585172ebd9",
+                proxyContract: "0x139608ABeE12Ff39FEDae39C493B571A25995E10",
+                unverifiedContract: "0x0000000000000000000000000000000000000000"
+            }
+        });
+
+        it("should create a contract instance for verified smart contract", async () => {
+            // Arrange
+            const web3Context = new core.Web3Context(params.rpc);
+            const expectedOwner: string = "0x54D9Cf7C39897446F9Eb8Ead6016d3C452077327";
+
+            // Act
+            web3Context.registerPlugin(new ContractPlugin());
+            const contract = await web3Context.contractPlugin.contract(params.verifiedContract);
+            const actualOwner: boolean = await contract.methods.owner().call();
+
+            // Assert
+            expect(contract).not.toBeNull();
+            expect(expectedOwner).toEqual(actualOwner);
+        }, 30 * SECONDS);
+
+        it("should create the implementation contract instance for a proxy contract", async () => {
+            // Arrange
+            const web3Context = new core.Web3Context(params.rpc);
+            const expectedSymbol: string = "RARI";
+
+            // Act
+            web3Context.registerPlugin(new ContractPlugin());
+            const contract = await web3Context.contractPlugin.contract(params.proxyContract); // Pass an empty object as the second argument
+            const actualSymbol: string = await contract.methods.symbol().call();
+
+            // Assert
+            expect(contract).not.toBeNull();
+            expect(actualSymbol).toEqual(expectedSymbol);
+        }, 30 * SECONDS);
+
+        it("should throw an error for unverified smart contract", async () => {
+            // Arrange
+            const web3Context = new core.Web3Context(params.rpc);
+
+            // Act & Assert
+            await expect(async () => {
+                web3Context.registerPlugin(new ContractPlugin(params.apiKey));
+                await web3Context.contractPlugin.contract(params.unverifiedContract);
+            }).rejects.toThrow();
+        });
+    });
 });

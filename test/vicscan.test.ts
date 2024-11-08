@@ -106,7 +106,7 @@ describe("Vicscan Tests", () => {
     //     });
     // });
 
-    describe(`${getNetworkNameFromChainID(ChainID.VICTION_TESTNET)} Other`, () => {
+    describe(`${getNetworkNameFromChainID(ChainID.VICTION_TESTNET)} Test`, () => {
         let params: {
             chainId: string
             rpc: string,

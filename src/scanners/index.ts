@@ -88,6 +88,10 @@ export const getScanner = (chainId: string, apiKey: string = ""): ExplorerInterf
         // APECHAIN currently using blockscout, but could move to etherscan
         case ChainID.APECHAIN_MAINNET:
         case ChainID.APECHAIN_CURTIS_TESTNET:
+        case ChainID.EDUCHAIN:
+        case ChainID.SHAPE_MAINNET:
+        case ChainID.SHAPE_SEPOLIA:
+        case ChainID.INK_SEPOLIA:
             return new BlockScoutClient(chainId, apiKey)
         case ChainID.XDC_MAINNET:
             return new BlocksScanClient(chainId, apiKey)

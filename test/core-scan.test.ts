@@ -34,7 +34,7 @@ describe("CoreScan Tests", () => {
         it("should create a contract instance for verified smart contract", async () => {
             // Arrange
             const web3Context = new core.Web3Context(params.rpc);
-            const expectedFeeTo: string = "0x95910805dc57F99934d29cf957a8D3b7fa597d57";
+            const expectedFeeTo: string = "0xc84EC85a14D791162CA3C0A98903967506002846";
 
             // Act
             web3Context.registerPlugin(new ContractPlugin());
