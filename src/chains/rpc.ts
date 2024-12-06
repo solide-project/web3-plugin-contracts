@@ -165,4 +165,6 @@ export const data: { [key: string]: string } = {
     [ChainID.INK_SEPOLIA]: "https://rpc-gel-sepolia.inkonchain.com",
     [ChainID.WORLD_MAINNET]: "https://worldchain-mainnet.g.alchemy.com/public",
     [ChainID.WORLD_SEPOLIA]: "https://worldchain-sepolia.g.alchemy.com/public",
+    [ChainID.CHILIZ_CHAIN]: "https://rpc.chiliz.com",
+    [ChainID.CHILIS_SPICY_TESTNET]: "https://spicy-rpc.chiliz.com",
 }

@@ -261,6 +261,9 @@ const getIcon = (chainId: string): string => {
     case ChainID.WORLD_MAINNET:
     case ChainID.WORLD_SEPOLIA:
       return "world.svg"
+    case ChainID.CHILIZ_CHAIN:
+    case ChainID.CHILIS_SPICY_TESTNET:
+      return "chiliz.svg"
     default:
       return ""
   }

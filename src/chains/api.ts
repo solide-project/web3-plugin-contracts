@@ -1,6 +1,7 @@
 import { ChainID } from "./chain-id"
+import { Explorer } from "./service"
 
-export const data: { [key: string]: string } = {
+export const data: { [key: string]: string | { [key: string]: string } } = {
   [ChainID.ETHEREUM_MAINNET]: "https://api.etherscan.io",
   [ChainID.ETHEREUM_GOERLI]: "https://api-goerli.etherscan.io",
   [ChainID.ETHEREUM_SEPOLIA]: "https://api-sepolia.etherscan.io",
@@ -178,4 +179,12 @@ export const data: { [key: string]: string } = {
   [ChainID.INK_SEPOLIA]: "https://explorer-sepolia.inkonchain.com",
   [ChainID.WORLD_MAINNET]: "https://api.worldscan.org",
   [ChainID.WORLD_SEPOLIA]: "https://api-sepolia.worldscan.org",
+  [ChainID.CHILIZ_CHAIN]: {
+    [Explorer.ROUTESCAN]: "https://api.routescan.io/v2/network/mainnet/evm/88888/etherscan",
+    [Explorer.BLOCKSCOUT]: "https://scan.chiliz.com",
+  },
+  [ChainID.CHILIS_SPICY_TESTNET]: {
+    [Explorer.ROUTESCAN]: "https://api.routescan.io/v2/network/mainnet/evm/88882/etherscan",
+    [Explorer.BLOCKSCOUT]: "https://testnet.chiliscan.com",
+  },
 }

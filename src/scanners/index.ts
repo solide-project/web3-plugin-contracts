@@ -10,11 +10,26 @@ import { EthernalClient } from "./ethernal";
 import { EtherScanClient } from "./etherscan";
 import { ExplorerInterface } from "./explorer-service";
 import { FilScanClient } from "./filscan";
+import { MultiScanClient } from "./multiscan";
 import { RoninChainClient } from "./roninchain";
 import { TronScanClient } from "./tronscan";
 import { VicScanClient } from "./vicscan";
 
-export const getScanner = (chainId: string, apiKey: string = ""): ExplorerInterface | undefined => {
+export enum Explorer {
+    BLOCKSCOUT = "blockscout",
+    ROUTESCAN = "routes",
+}
+
+export interface ScannerParams {
+    chainId: string
+    explorer?: string
+    apiKey?: string
+}
+export const getScanner = ({
+    chainId,
+    explorer = "",
+    apiKey = ""
+}: ScannerParams): ExplorerInterface | undefined => {
     switch (chainId) {
         case ChainID.METIS_ANDROMEDA:
         case ChainID.METIS_SEPOLIA:
@@ -123,6 +138,13 @@ export const getScanner = (chainId: string, apiKey: string = ""): ExplorerInterf
             return new BTRScanClient(chainId, apiKey)
         case ChainID.COTI_DEVNET:
             return new EthernalClient(chainId, apiKey)
+        case ChainID.CHILIZ_CHAIN:
+        case ChainID.CHILIS_SPICY_TESTNET:
+            return new MultiScanClient(chainId, {
+                [Explorer.BLOCKSCOUT]: apiKey,
+                [Explorer.ROUTESCAN]: apiKey,
+            })
+
         default:
             return new EtherScanClient(chainId, apiKey)
     }
