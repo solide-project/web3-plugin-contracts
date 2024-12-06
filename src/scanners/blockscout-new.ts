@@ -3,14 +3,32 @@ import { BaseScan } from "./base"
 import {
     generateSourceCodeError, EthGetSourceCodeInterface, ExplorerInterface
 } from "./explorer-service"
+import { Explorer } from "."
+import { getAPI } from "../chains"
 
 export class BlockScoutClient extends BaseScan implements ExplorerInterface {
     constructor(chainId: string, apiKey?: string) {
         super(chainId, apiKey)
     }
 
+    getsourcecodeURL(address: string): string {
+        const apiUrl: string = getAPI(this.chainId, Explorer.BLOCKSCOUT)
+        if (!apiUrl) {
+            return ""
+        }
+
+        let uri = `${apiUrl}/${this.getSourceCodeEndpoint(address)}`
+        // const apiKey = getAPIKey(this.chainId)
+        if (this.apiKey) {
+            uri = uri.concat(`&apikey=${this.apiKey}`)
+        }
+
+        return uri
+    }
+
     async getSourceCode(address: string): Promise<EthGetSourceCodeInterface> {
         let data: EthGetSourceCodeInterface = await this.call(address)
+
         if (data.status === "0") {
             return data
         }

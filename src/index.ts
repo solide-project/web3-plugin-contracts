@@ -57,7 +57,11 @@ export class ContractPlugin extends Web3PluginBase {
 }
 
 export const getSource = async (contractAddress: string, options: ContractPluginOptions) => {
-  const scanner = getScanner(options.chainId, options.apiKey);
+  const scanner = getScanner({
+    chainId: options.chainId, 
+    explorer: options.explorer,
+    apiKey: options.apiKey
+  });
   if (!scanner) {
     throw new Error("Chain may not be supported")
   }
@@ -94,9 +98,10 @@ export const getContract = async (contractAddress: string, options: ContractPlug
 }
 
 interface ContractPluginOptions {
-  chainId: string;
-  apiKey?: string;
-  // asProxy?: boolean; // TODO: Get contract as proxy instead of it implementation ABI
+  chainId: string
+  apiKey?: string
+  // asProxy?: boolean // TODO: Get contract as proxy instead of it implementation ABI
+  explorer?: string
 }
 
 // Module Augmentation
