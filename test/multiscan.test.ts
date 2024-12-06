@@ -46,7 +46,7 @@ describe("Multiscan Tests", () => {
             expect(actualName).toEqual(expectedName);
         }, 30 * SECONDS);
 
-        it("should create a contract instance for verified smart contract routescan and not", async () => {
+        it("should create a contract instance for verified smart contract routescan", async () => {
             // Arrange
             const web3Context = new core.Web3Context(params.rpc);
             const expectedPaused: boolean = false;

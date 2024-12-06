@@ -43,17 +43,6 @@ export class ContractPlugin extends Web3PluginBase {
   public ping(): string {
     return "pong";
   }
-
-  private async chainId() {
-    const chainResponse = await this.requestManager?.send({
-      method: "eth_chainId",
-      params: [],
-    })
-    if (!chainResponse) {
-      throw new Error("Chain ID not found")
-    }
-    return parseInt(chainResponse, 16);
-  }
 }
 
 export const getSource = async (contractAddress: string, options: ContractPluginOptions) => {
