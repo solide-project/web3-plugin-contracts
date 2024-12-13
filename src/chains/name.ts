@@ -168,4 +168,6 @@ export const data: { [key: string]: string } = {
   [ChainID.INK_SEPOLIA]: "Ink Sepolia",
   [ChainID.WORLD_MAINNET]: "World Chain",
   [ChainID.WORLD_SEPOLIA]: "World Chain Sepolia",
+  [ChainID.CHILIZ_CHAIN]: "Chiliz Chain",
+  [ChainID.CHILIS_SPICY_TESTNET]: "Chiliz Spicy Testnet",
 }
