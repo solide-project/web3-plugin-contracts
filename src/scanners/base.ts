@@ -89,23 +89,21 @@ export class BaseScan {
     return solcVersion
   }
 
-  generateDefaultResult = (): ContractInfo => {
-    return {
-      SourceCode: "",
-      ABI: "",
-      ContractName: "",
-      CompilerVersion: solcVersion,
-      OptimizationUsed: "0",
-      Runs: "200",
-      ConstructorArguments: "",
-      EVMVersion: "default",
-      Library: "",
-      LicenseType: "0",
-      Proxy: "",
-      Implementation: "",
-      SwarmSource: "",
-    }
-  }
+  generateDefaultResult = (): ContractInfo => ({
+    SourceCode: "",
+    ABI: "",
+    ContractName: "",
+    CompilerVersion: solcVersion,
+    OptimizationUsed: "0",
+    Runs: "200",
+    ConstructorArguments: "",
+    EVMVersion: "default",
+    Library: "",
+    LicenseType: "0",
+    Proxy: "",
+    Implementation: "",
+    SwarmSource: "",
+  })
 
   async metadataGetSources(metadata: any): Promise<any> {
     let sources: Record<string, { content: string }> = {}

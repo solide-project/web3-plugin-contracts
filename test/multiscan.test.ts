@@ -10,7 +10,7 @@ describe("Multiscan Tests", () => {
         jest.setTimeout(20 * SECONDS)
     });
 
-    describe(`${getNetworkNameFromChainID(ChainID.CHILIZ_CHAIN)} Test`, () => {
+    describe(`${getNetworkNameFromChainID(ChainID.CHILIZ)} Test`, () => {
         let params: {
             chainId: string
             rpc: string,
@@ -20,7 +20,7 @@ describe("Multiscan Tests", () => {
             unverifiedContract: string
         }
         beforeAll(() => {
-            const chain = ChainID.CHILIZ_CHAIN;
+            const chain = ChainID.CHILIZ;
             params = {
                 chainId: chain,
                 rpc: getRPC(chain),

@@ -3,7 +3,7 @@ import { data as NAME } from "./name"
 import { data as API } from "./api"
 import { data as EXPLORER } from "./explorer"
 import { ChainID } from "./chain-id"
-import { Explorer } from "src/scanners"
+import { Explorer } from "./service"
 
 export const getRPC = (network: string): string =>
     RPC[network] || ""

@@ -1,3 +1,4 @@
+import { Explorer } from "../chains/service";
 import { ChainID } from "../chains";
 import { BlockScoutClient } from "./blockscout-new";
 import { BlockScoutOldClient } from "./blockscout-old";
@@ -8,17 +9,14 @@ import { ConfluxScanClient } from "./confluxscan";
 import { CoreScanClient } from "./core-scan";
 import { EthernalClient } from "./ethernal";
 import { EtherScanClient } from "./etherscan";
+import { EtherScanV2Client } from "./etherscan-v2";
 import { ExplorerInterface } from "./explorer-service";
 import { FilScanClient } from "./filscan";
 import { MultiScanClient } from "./multiscan";
 import { RoninChainClient } from "./roninchain";
 import { TronScanClient } from "./tronscan";
 import { VicScanClient } from "./vicscan";
-
-export enum Explorer {
-    BLOCKSCOUT = "blockscout",
-    ROUTESCAN = "routes",
-}
+import { AbstractClient } from "./abstract";
 
 export interface ScannerParams {
     chainId: string
@@ -106,6 +104,7 @@ export const getScanner = ({
         case ChainID.EDUCHAIN:
         case ChainID.SHAPE_MAINNET:
         case ChainID.SHAPE_SEPOLIA:
+        case ChainID.INK:
         case ChainID.INK_SEPOLIA:
             return new BlockScoutClient(chainId, apiKey)
         case ChainID.XDC_MAINNET:
@@ -138,13 +137,17 @@ export const getScanner = ({
             return new BTRScanClient(chainId, apiKey)
         case ChainID.COTI_DEVNET:
             return new EthernalClient(chainId, apiKey)
-        case ChainID.CHILIZ_CHAIN:
-        case ChainID.CHILIS_SPICY_TESTNET:
+        case ChainID.CHILIZ:
+        case ChainID.CHILIZ_SPICY_TESTNET:
             return new MultiScanClient(chainId, {
                 [Explorer.BLOCKSCOUT]: apiKey,
                 [Explorer.ROUTESCAN]: apiKey,
             })
-
+        case ChainID.SONIC:
+        case ChainID.SONIC_TESTNET:
+            return new EtherScanV2Client(chainId, apiKey)
+        case ChainID.ABSTRACT_TESTNET:
+            return new AbstractClient(chainId, apiKey)
         default:
             return new EtherScanClient(chainId, apiKey)
     }

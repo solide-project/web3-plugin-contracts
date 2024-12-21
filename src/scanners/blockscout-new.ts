@@ -3,8 +3,8 @@ import { BaseScan } from "./base"
 import {
     generateSourceCodeError, EthGetSourceCodeInterface, ExplorerInterface
 } from "./explorer-service"
-import { Explorer } from "."
 import { getAPI } from "../chains"
+import { Explorer } from "../chains/service"
 
 export class BlockScoutClient extends BaseScan implements ExplorerInterface {
     constructor(chainId: string, apiKey?: string) {

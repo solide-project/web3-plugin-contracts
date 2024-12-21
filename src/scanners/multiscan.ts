@@ -1,4 +1,4 @@
-import { Explorer } from "."
+import { Explorer } from "../chains/service"
 import { BaseScan } from "./base"
 import { BlockScoutClient } from "./blockscout-new"
 import {

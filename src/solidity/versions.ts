@@ -1,6 +1,9 @@
 export const solcVersion = "v0.8.23+commit.f704f362"
 
 export const compilerVersions = [
+    "v0.8.28+commit.7893614a",
+    "v0.8.27+commit.40a35a09",
+    "v0.8.26+commit.8a97fa7a",
     "v0.8.25+commit.b61c2a91",
     "v0.8.24+commit.e11b9ed9",
     "v0.8.23+commit.f704f362",
