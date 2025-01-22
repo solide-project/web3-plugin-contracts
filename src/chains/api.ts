@@ -183,7 +183,7 @@ export const data: { [key: string]: string | { [key: string]: string } } = {
     [Explorer.BLOCKSCOUT]: "https://scan.chiliz.com",
   },
   [ChainID.CHILIZ_SPICY_TESTNET]: {
-    [Explorer.ROUTESCAN]: "https://api.routescan.io/v2/network/mainnet/evm/88882/etherscan",
+    [Explorer.ROUTESCAN]: "https://api.routescan.io/v2/network/testnet/evm/88882/etherscan",
     [Explorer.BLOCKSCOUT]: "https://spicy-explorer.chiliz.com",
   },
   [ChainID.SONIC]: "https://api.etherscan.io",
