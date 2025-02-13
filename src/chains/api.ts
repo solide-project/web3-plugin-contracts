@@ -191,4 +191,12 @@ export const data: { [key: string]: string | { [key: string]: string } } = {
   [ChainID.INK]: "https://explorer.inkonchain.com/api/v2",
   [ChainID.INK_SEPOLIA]: "https://explorer.testnet.abs.xyz",
   [ChainID.ABSTRACT_TESTNET]: "https://block-explorer-api.testnet.abs.xyz",
+  [ChainID.STACK]: "https://explorer.stack.so",
+  [ChainID.STACK_TESTNET]: "https://testnet.explorer.stack.so",
+  [ChainID.HEMI_TESTNET]: "https://testnet.explorer.hemi.xyz",
+  [ChainID.MINT]: "https://explorer.mintchain.io",
+  [ChainID.MINT_SEPOLIA]: "https://sepolia-testnet-explorer.mintchain.io",
+  [ChainID.TABI_TESTNET]: "https://testnet.tabiscan.com",
+  [ChainID.SUPERPOSITION]: "https://explorer.superposition.so",
+  [ChainID.SUPERPOSITION_TESTNET]: "https://testnet-explorer.superposition.so",
 }

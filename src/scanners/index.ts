@@ -106,6 +106,14 @@ export const getScanner = ({
         case ChainID.SHAPE_SEPOLIA:
         case ChainID.INK:
         case ChainID.INK_SEPOLIA:
+        case ChainID.STACK:
+        case ChainID.STACK_TESTNET:
+        case ChainID.HEMI_TESTNET:
+        case ChainID.MINT:
+        case ChainID.MINT_SEPOLIA:
+        case ChainID.TABI_TESTNET:
+        case ChainID.SUPERPOSITION:
+        case ChainID.SUPERPOSITION_TESTNET:
             return new BlockScoutClient(chainId, apiKey)
         case ChainID.XDC_MAINNET:
             return new BlocksScanClient(chainId, apiKey)
