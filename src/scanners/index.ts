@@ -80,6 +80,7 @@ export const getScanner = ({
         case ChainID.ETHERLINK_TESTNET:
         case ChainID.MODE_MAINNET:
         case ChainID.MODE_SEPOLIA:
+        case ChainID.MORPH:
         case ChainID.MORPH_TESTNET:
         case ChainID.SYNDICATE_FRAME_MAINNET:
         case ChainID.DOS_MAINNET:
@@ -114,6 +115,14 @@ export const getScanner = ({
         case ChainID.TABI_TESTNET:
         case ChainID.SUPERPOSITION:
         case ChainID.SUPERPOSITION_TESTNET:
+        case ChainID.SWELLCHAIN:
+        case ChainID.SWELLCHAIN_TESTNET:
+        case ChainID.PLUME:
+        case ChainID.PLUME_TESTNET:
+        case ChainID.DARWINIA:
+        case ChainID.DARWINIA_CRAB:
+        case ChainID.ANCIENT_8:
+        case ChainID.ANCIENT_8_TESTNET:
             return new BlockScoutClient(chainId, apiKey)
         case ChainID.XDC_MAINNET:
             return new BlocksScanClient(chainId, apiKey)
