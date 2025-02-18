@@ -17,6 +17,7 @@ import { RoninChainClient } from "./roninchain";
 import { TronScanClient } from "./tronscan";
 import { VicScanClient } from "./vicscan";
 import { AbstractClient } from "./abstract";
+import { AutheoClient } from "./autheo";
 
 export interface ScannerParams {
     chainId: string
@@ -51,6 +52,7 @@ export const getScanner = ({
         case ChainID.FLARE_COSTON:
         case ChainID.FLARE_COSTON2:
         case ChainID.VELAS_MAINNET:
+        case ChainID.EPHEMERY_TESTNET:
             return new BlockScoutOldClient(chainId, apiKey)
         case ChainID.IMMUTABLE_MAINNET:
         case ChainID.IMMUTABLE_TESTNET:
@@ -165,6 +167,8 @@ export const getScanner = ({
             return new EtherScanV2Client(chainId, apiKey)
         case ChainID.ABSTRACT_TESTNET:
             return new AbstractClient(chainId, apiKey)
+        case ChainID.AUTHEO_TESTNET:
+            return new AutheoClient(chainId, apiKey)
         default:
             return new EtherScanClient(chainId, apiKey)
     }
