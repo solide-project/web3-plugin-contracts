@@ -18,6 +18,7 @@ import { TronScanClient } from "./tronscan";
 import { VicScanClient } from "./vicscan";
 import { AbstractClient } from "./abstract";
 import { AutheoClient } from "./autheo";
+import { BlockVisionClient } from "./blockvision";
 
 export interface ScannerParams {
     chainId: string
@@ -169,6 +170,10 @@ export const getScanner = ({
             return new AbstractClient(chainId, apiKey)
         case ChainID.AUTHEO_TESTNET:
             return new AutheoClient(chainId, apiKey)
+        case ChainID.MONAD_TESTNET:
+        case ChainID.BOUNCEBIT:
+        case ChainID.BOUNCEBIT_TESTNET:
+            return new BlockVisionClient(chainId, apiKey)
         default:
             return new EtherScanClient(chainId, apiKey)
     }

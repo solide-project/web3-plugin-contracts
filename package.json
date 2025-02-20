@@ -1,6 +1,6 @@
 {
   "name": "web3-plugin-contracts",
-  "version": "1.7.9",
+  "version": "1.8.0",
   "description": "Web3js plugin for interacting with smart contracts",
   "main": "lib/index.js",
   "types": "lib/index.d.ts",
