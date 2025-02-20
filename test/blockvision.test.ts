@@ -46,21 +46,20 @@ describe("BlockVision Explorer Tests", () => {
             expect(actualName).toEqual(expectedName);
         }, 30 * SECONDS);
 
-        // it("should create a contract instance for verified smart contract for additional sources", async () => {
-        //     // Arrange
-        //     const web3Context = new core.Web3Context(params.rpc);
-        //     const expectedName: bigint = BigInt(18);
+        it("should create a contract instance for verified smart contract for additional sources", async () => {
+            // Arrange
+            const web3Context = new core.Web3Context(params.rpc);
+            const expectedName: bigint = BigInt(6);
 
-        //     // Act
-        //     web3Context.registerPlugin(new ContractPlugin());
-        //     const contract = await web3Context.contractPlugin.contract("0x6129B8079ad213a11B3AF3EFC1205315e20cA598"); // Pass an empty object as the second argument
-        //     const actualName: bigint = await contract.methods.decimals().call();
-        //     console.log(actualName)
+            // Act
+            web3Context.registerPlugin(new ContractPlugin());
+            const contract = await web3Context.contractPlugin.contract("0xf817257fed379853cDe0fa4F97AB987181B1E5Ea"); // Pass an empty object as the second argument
+            const actualName: bigint = await contract.methods.decimals().call();
 
-        //     // Assert
-        //     expect(contract).not.toBeNull();
-        //     expect(actualName).toEqual(expectedName);
-        // }, 30 * SECONDS);
+            // Assert
+            expect(contract).not.toBeNull();
+            expect(actualName).toEqual(expectedName);
+        }, 30 * SECONDS);
 
         it("should throw an error for unverified smart contract", async () => {
             // Arrange

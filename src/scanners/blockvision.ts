@@ -57,14 +57,32 @@ export class BlockVisionClient extends BaseScan implements ExplorerInterface {
         }
 
         if (data.result.metaData.sources) {
-            Object.entries(data.result.metaData.sources).map(([key, value]) => {
-                const contractName = path.basename(key)
+            const remappings: { [key: string]: string } = {}
+            if (data.result?.metaData?.settings?.remappings) {
+                data.result?.metaData?.settings?.remappings.map((x: string) => {
+                    const [to, from] = x.split("=")
+                    const cleanTo = this.cleanRemapping(to)
+                    const cleanFrom = this.cleanRemapping(from)
+                    if (!remappings[cleanFrom]) remappings[cleanFrom] = cleanTo
+                })
+            }
+
+            Object.entries(data.result.metaData.sources).map(([filePath, value]) => {
+                const contractName = path.basename(filePath)
 
                 const content = data.result.contractSourceCode
                     .filter(({ content, name }: { content: string, name: string }) => name === contractName)
                     .pop();
 
-                sourceInput.sources[key] = content || ""
+                const maps: string[] = Object.keys(remappings) || []
+                const remapper: string =
+                    maps.find((map) => filePath.startsWith(map)) || ""
+
+                const fileToResolve: string = remapper
+                    ? filePath.replace(remapper, remappings[remapper])
+                    : filePath
+
+                sourceInput.sources[fileToResolve] = content || ""
             })
         }
 
@@ -72,7 +90,7 @@ export class BlockVisionClient extends BaseScan implements ExplorerInterface {
         results.ABI = data.result.contractABI
         results.Language = data.result.metaData.language || "Solidity"
         results.ContractName = contractName
-        results.CompilerVersion = data.result.metaData.compiler.version || solcVersion
+        results.CompilerVersion = this.formatVersion(data.result.metaData.compiler.version) || solcVersion
         sourceInput.settings = metadataLib.settings(data.result.metaData)
 
         return {
@@ -80,5 +98,13 @@ export class BlockVisionClient extends BaseScan implements ExplorerInterface {
             message: "OK",
             result: [results],
         }
+    }
+
+    cleanRemapping(remap: string) {
+        if (remap.startsWith(':')) {
+            return remap.slice(1);
+        }
+
+        return remap
     }
 }

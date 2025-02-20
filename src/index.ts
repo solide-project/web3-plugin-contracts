@@ -74,8 +74,8 @@ export const getContract = async (contractAddress: string, options: ContractPlug
   switch (options.chainId) {
     case ChainID.XDC_MAINNET:
       contractAddress = "0x" + contractAddress.slice(3);
-
   }
+
   const abi = JSON.parse(data.result[0].ABI) as any[]
   const contractABI = [...abi] as const;
   const contract = new Contract(
