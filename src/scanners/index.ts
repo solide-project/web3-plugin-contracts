@@ -156,6 +156,7 @@ export const getScanner = ({
         case ChainID.BITLAYER_TESTNET:
             return new BTRScanClient(chainId, apiKey)
         case ChainID.COTI_DEVNET:
+        case ChainID.COTI_TESTNET:
             return new EthernalClient(chainId, apiKey)
         case ChainID.CHILIZ:
         case ChainID.CHILIZ_SPICY_TESTNET:

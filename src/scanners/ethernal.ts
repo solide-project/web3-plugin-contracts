@@ -1,3 +1,4 @@
+import { ChainID } from "../../src/chains"
 import { BaseScan } from "./base"
 import {
     EthGetSourceCodeInterface, ExplorerInterface,
@@ -10,8 +11,19 @@ export class EthernalClient extends BaseScan implements ExplorerInterface {
     }
 
     getSourceCodeEndpoint(address: string): string {
-        return `api/contracts/${address}?firebaseUserId=4SLyFFkgeJeePC39HgcRLLfy1qp1&workspace=unsightly-mango-air`
+        return `api/contracts/${address}?firebaseUserId=4SLyFFkgeJeePC39HgcRLLfy1qp1&workspace=${this.getWorksapce()}`
     }
+
+    getWorksapce(): string {
+        switch (this.chainId) {
+            case ChainID.COTI_DEVNET:
+                return "unsightly-mango-air"
+            case ChainID.COTI_TESTNET:
+            default:
+                return "COTI+Testnet"
+        }
+    }
+
 
     async call(address: string): Promise<any> {
         const apiUrl: string = this.getsourcecodeURL(address)
