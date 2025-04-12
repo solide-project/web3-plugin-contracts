@@ -161,6 +161,7 @@ export const data: { [key: string]: string | { [key: string]: string } } = {
   [ChainID.GNOSIS_CHIADO]: "https://gnosis-chiado.blockscout.com",
   [ChainID.COTI_DEVNET]: "https://ethernal.fly.dev",
   [ChainID.COTI_TESTNET]: "https://ethernal.fly.dev",
+  [ChainID.COTI_MAINNET]: "https://mainnet.cotiscan.io",
   [ChainID.LISK_MAINNET]: "https://blockscout.lisk.com",
   [ChainID.LISK_SEPOLIA]: "https://sepolia-blockscout.lisk.com",
   [ChainID.REDSTONE_MAINNET]: "https://explorer.redstone.xyz",

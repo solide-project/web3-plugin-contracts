@@ -1,5 +1,5 @@
 import { core } from "web3";
-import { ContractPlugin, getSource } from "../src";
+import { ContractPlugin } from "../src";
 import { ChainID, getAPIKey, getNetworkNameFromChainID, getRPC } from "../src/chains";
 
 describe("Ethernal Tests", () => {
@@ -10,7 +10,7 @@ describe("Ethernal Tests", () => {
         jest.setTimeout(20 * SECONDS)
     });
 
-    describe(`${getNetworkNameFromChainID(ChainID.COTI_DEVNET)} Test`, () => {
+    describe(`${getNetworkNameFromChainID(ChainID.COTI_TESTNET)} Test`, () => {
         let params: {
             chainId: string
             rpc: string,
@@ -20,7 +20,7 @@ describe("Ethernal Tests", () => {
             unverifiedContract: string
         }
         beforeAll(() => {
-            const chain = ChainID.COTI_DEVNET;
+            const chain = ChainID.COTI_TESTNET;
             params = {
                 chainId: chain,
                 rpc: getRPC(chain),

@@ -1,4 +1,4 @@
-import { ChainID } from "../../src/chains"
+import { ChainID } from "../chains"
 import { BaseScan } from "./base"
 import {
     EthGetSourceCodeInterface, ExplorerInterface,

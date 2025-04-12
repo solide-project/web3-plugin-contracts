@@ -126,6 +126,8 @@ export const getScanner = ({
         case ChainID.DARWINIA_CRAB:
         case ChainID.ANCIENT_8:
         case ChainID.ANCIENT_8_TESTNET:
+        case ChainID.PHAROS_DEVNET:
+        case ChainID.COTI_MAINNET:
             return new BlockScoutClient(chainId, apiKey)
         case ChainID.XDC_MAINNET:
             return new BlocksScanClient(chainId, apiKey)
