@@ -207,4 +207,5 @@ export const data: { [key: string]: string | { [key: string]: string } } = {
   [ChainID.MONAD_TESTNET]: "https://monad-testnet.socialscan.io",
   [ChainID.BOUNCEBIT]: "https://bbscan.io",
   [ChainID.BOUNCEBIT_TESTNET]: "https://testnet.bbscan.io",
+  [ChainID.PHAROS_DEVNET]: "https://pharosscan.xyz",
 }

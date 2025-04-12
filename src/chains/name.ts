@@ -197,4 +197,5 @@ export const data: { [key: string]: string } = {
   [ChainID.MONAD_TESTNET]: "Monad Testnet",
   [ChainID.BOUNCEBIT]: "BounceBit",
   [ChainID.BOUNCEBIT_TESTNET]: "BounceBit Testnet",
+  [ChainID.PHAROS_DEVNET]: "Pharos Devnet",
 }

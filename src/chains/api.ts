@@ -214,4 +214,5 @@ export const data: { [key: string]: string | { [key: string]: string } } = {
   [ChainID.MONAD_TESTNET]: "https://monad-api.blockvision.org/testnet",
   [ChainID.BOUNCEBIT]: "",
   [ChainID.BOUNCEBIT_TESTNET]: "",
+  [ChainID.PHAROS_DEVNET]: "https://pharosscan.xyz",
 }

@@ -168,4 +168,53 @@ describe("Blockscout (New) Tests", () => {
             }).rejects.toThrow();
         });
     });
+
+    describe(`${getNetworkNameFromChainID(ChainID.PHAROS_DEVNET)} Test`, () => {
+        let params: {
+            chainId: string
+            rpc: string,
+            apiKey?: string
+            verifiedContract: string
+            proxyContract: string
+            unverifiedContract: string
+        }
+        beforeAll(() => {
+            const chain = ChainID.PHAROS_DEVNET;
+            params = {
+                chainId: chain,
+                rpc: getRPC(chain),
+                apiKey: getAPIKey(chain),
+                verifiedContract: "0x997aA03eE41e4555f531B9C75Ed0CFE950A94d4C",
+                proxyContract: "0xBfF76b87788976e43Be94CeB6bc7894934De2405",
+                unverifiedContract: "0x0000000000000000000000000000000000000000"
+            }
+        });
+
+        it("should create a contract instance for verified smart contract", async () => {
+            // Arrange
+            const web3Context = new core.Web3Context(params.rpc);
+            const expectedSymbol: string = "WETH";
+
+            // Act
+            web3Context.registerPlugin(new ContractPlugin());
+            const contract = await web3Context.contractPlugin.contract(params.verifiedContract);
+            const actualSymbol: boolean = await contract.methods.symbol().call();
+
+            // Assert
+            expect(contract).not.toBeNull();
+            expect(actualSymbol).toEqual(expectedSymbol);
+        }, 30 * SECONDS);
+
+        it("should throw an error for unverified smart contract", async () => {
+            // Arrange
+            const web3Context = new core.Web3Context(params.rpc);
+
+            // Act & Assert
+            await expect(async () => {
+                web3Context.registerPlugin(new ContractPlugin(params.apiKey));
+                await web3Context.contractPlugin.contract(params.unverifiedContract);
+            }).rejects.toThrow();
+        });
+    });
 });
+

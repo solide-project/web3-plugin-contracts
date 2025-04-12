@@ -194,4 +194,5 @@ export const data: { [key: string]: string } = {
     [ChainID.MONAD_TESTNET]: "https://testnet-rpc.monad.xyz",
     [ChainID.BOUNCEBIT]: "https://fullnode-mainnet.bouncebitapi.com",
     [ChainID.BOUNCEBIT_TESTNET]: "https://fullnode-testnet.bouncebitapi.com",
+    [ChainID.PHAROS_DEVNET]: "https://devnet.dplabs-internal.com",
 }
